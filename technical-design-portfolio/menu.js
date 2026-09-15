@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateActiveNav(name);
 
-    fetch('/content/' + name + '.html')
+    fetch('content/' + name + '.html')
       .then(r => {
         if (!r.ok) throw new Error("Network error");
         return r.text();
