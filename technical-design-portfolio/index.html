@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Special+Gothic+Expanded+One&family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+  <title>Evan Alley | Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="hamburger">
+    <img src="icon/menu.svg">
+  </div>
+
+  <header>
+
+    <div>
+      <h1>
+        <span style="color: darkturquoise">EVAN</span><span style="color: orangered">ALLEY,</span>
+      </h1>
+      <h2 style="line-height: 0.9;">
+        Technical Game Designer.
+      </h2>
+    </div>
+
+    <nav aria-label="Primary">
+      <ul>
+
+        <li>
+          <button type="button" class="nav-item clicked" data-name="home">
+              Home
+          </button>
+        </li>
+
+        <li aria-label="Projects section">
+          <h4 class="nav-category" aria-hidden="true"> 
+            PROJECTS:
+          </h4>
+        </li>
+        
+        <li>
+          <button type="button" class="nav-item" data-name="syke">
+            Syke
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="nav-item" data-name="hydroplane">
+            Hydroplane
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="nav-item" data-name="theatour">
+            Theatour
+          </button>
+        </li>
+
+        <li aria-label="Info section">
+          <h4 class="nav-category" aria-hidden="true"> 
+            INFO:
+          </h4>
+        </li>
+
+        <li>
+          <button type="button" class="nav-item" data-name="about">
+            About
+          </button>
+        </li>
+
+        <li>
+          <button type="button" class="nav-item" data-name="resume">
+            Resume
+          </button>
+        </li>
+
+        <li>
+          <a class="nav-item" href="mailto:evan@alley.biz">
+            Email
+          </a>
+        </li>
+      </ul>
+
+      <div class="links">
+        <a href="https://alleydot.com" target="_blank" rel="noopener noreferrer"><h4>© 2026 Alleydot Digital Design ↗</h4></a>
+      </div>
+      
+    </nav>
+  </header>
+  <main id="contentContainer">
+
+
+  <div class="card clickable" data-name="syke">
+    <img src="img/syke-splash.png" alt="Syke splash art">
+    <div class="card-content">
+      <h1>Syke</h1>
+      <h3>NON-EUCLIDEAN ESCAPE ROOM - 2024</h3>
+      <p>
+        Contributed design leadership, system design, programming, and level design.
+      </p>
+      <div class="icons">
+        <div class="badge">
+          <img src="icon/thumb-up.svg" alt="Ratings:">
+          9/10
+        </div>
+        <div class="badge">
+          <img src="icon/download.svg" alt="Downloads:">
+          30K+
+        </div>
+        <div class="badge">
+          <img src="icon/team.svg" alt="Team size">
+          31
+        </div>
+        <img src="icon/deck.svg" alt="Steam Deck">
+        <img src="icon/unreal.svg" alt="Unreal Engine">
+      </div>
+    </div>
+  </div>
+
+  <div class="card clickable" data-name="hydroplane">
+    <img src="img/hydroplane-splash.png" alt="Hydroplane splash art">
+    <div class="card-content">
+      <h1>Hydroplane</h1>
+      <h3>BIGMODE GAME JAM FINALIST - 2026</h3>
+      <p>Contributed 3Cs (Camera, character, control) design and implementation</p>  
+      <div class="icons">
+        <div class="badge">
+          <img src="icon/team.svg" alt="Team size:">
+          3
+        </div>
+        <img src="icon/web.svg" alt="Web">
+        <img src="icon/godot.svg" alt="Godot">
+      </div>
+    </div>
+  </div>  
+
+  <div class="card clickable" data-name="theatour">
+    <img src="img/theatour-splash.png" alt="Theatour splash art">
+    <div class="card-content">
+      <h1>Theatour</h1>
+      <h3>AUGMENTED REALITY TOUR - 2022</h3>
+      <p>Contributed tools, software design, and implementation of location services.</p>
+      <div class="icons">
+        <div class="badge">
+          <img src="icon/team.svg" alt="Team size">
+          8
+        </div>
+        <img src="icon/mobile.svg" alt="Mobile">
+        <img src="icon/unity.svg" alt="Unity">
+      </div>
+    </div>
+  </div>
+
+    
+  </main>
+  <script src="https://unpkg.com/navigo@8.11.1/lib/navigo.min.js"></script>
+  <script src="menu.js"></script>
+  <div class="modal" id="image-modal">
+    <div class="modal-content">
+      <img id="modal-image" alt="Modal content">
+    </div>
+  </div>
+</body>
+</html>
