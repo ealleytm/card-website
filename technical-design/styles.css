@@ -14,12 +14,6 @@
   --dot-space: clamp(0.875rem, 0.875rem + 0.5vw, 1.25rem);
   --dot-size: 2px;
   --gutter: 2rem;
-  --g1x: -10%;
-  --g1y: 0%;
-  --g2x: 85%;
-  --g2y: 100%;
-  --g3x: 50%;
-  --g3y: 10%;
   cursor: default;
 }
 
@@ -118,8 +112,26 @@ main {
   overflow-x: hidden;
   height: 100%;
   width: 100%;
-  background-color: darkslategrey;
-  background-image: url("img/nami.png");  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.25);
+  background:
+    radial-gradient(
+      circle at 110% 66%,
+      rgba(0, 206, 209, 0.35) 0%,
+      transparent 75%
+    ),
+    radial-gradient(
+      circle at 66% -10%,
+      rgba(138, 43, 226, 0.45) 0%,
+      transparent 90%
+    ),
+    radial-gradient(
+      circle at -15% 110%,
+      rgba(255, 69, 0, 0.35) 0%,
+      transparent 60%
+    ),
+    black
+  ;
+  box-shadow: inset 15px 15px 32px rgba(0, 0, 0, 0.5);
+  position: relative;
   border-radius: 8px;
   align-items: center;
   padding: var(--gutter);
