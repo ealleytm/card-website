@@ -9,14 +9,11 @@
   --font-lg: clamp(0.9rem, 0.9rem + 0.7vw, 2.25rem);
   --font-md: clamp(1.15rem, 0.7rem + 0.45vw, 1.45rem);
   --font-sm: clamp(1rem, 0.55rem + 0.35vw, 1.25rem);
-
-  --gutter: 2rem;
-  --g1x: -10%;
-  --g1y: 0%;
-  --g2x: 85%;
-  --g2y: 100%;
-  --g3x: 50%;
-  --g3y: 10%;
+  --dot-bg: whitesmoke;
+  --dot-color: gainsboro;
+  --dot-space: clamp(0.875rem, 0.875rem + 0.5vw, 1.25rem);
+  --dot-size: 2px;
+  --gutter: 0.64rem;
 }
 
 html {
@@ -26,26 +23,40 @@ html {
 
 body {
   background:
-    radial-gradient(circle at var(--g1x) var(--g1y), rgba(0, 206, 209, 0.55) 0%, transparent 75%),
-    radial-gradient(circle at var(--g2x) var(--g2y), rgba(138, 43, 226, 0.55) 0%, transparent 85%),
-    radial-gradient(circle at var(--g3x) var(--g3y), rgba(255, 69, 0, 0.55) 0%, transparent 85%),
-    black
-    ;    
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), 
+    transparent 1%) center / var(--dot-space) var(--dot-space), 
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), 
+    transparent 1%) center / var(--dot-space) var(--dot-space), var(--dot-color);
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+nav {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    padding: var(--gutter);
+    max-width: 640px;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    padding: var(--gutter);
+    max-width: 640px;
+}
+
 .content {
-    width: 640px;
-    max-width: 90%;
+    max-width: 1080px;
     display: flex;
     flex-direction: column;
     margin: var(--gutter);
     padding: var(--gutter);
-    border-radius: 2px;
-    background-color: whitesmoke;
     cursor: default;
 }
 
@@ -64,7 +75,9 @@ h2 {
 
 .hero-img {
     width: 100%;
+    object-fit: contain;
     margin: 20px 0px;
+    align-self: center;
 }
 
 p {
@@ -81,7 +94,7 @@ a {
     text-decoration: none;
     font-size:  var(--font-md);
     padding: 0.5rem;
-    max-width: 100%;
+    width: 100%;
     text-align: left;
     margin: 0 0 1rem 0;
     cursor: pointer;
@@ -93,7 +106,7 @@ a {
         -4px -4px 3px rgba(255, 255, 255, 0.8),
         inset 0px 0px 0px whitesmoke,
         inset 0px 0px 0px whitesmoke;
-  transition: color 150ms, box-shadow 150ms ease-in, background-color 150ms, border 150ms, transform 150ms ease-in;
+  transition: color box-shadow 150ms ease-in, border 150ms, transform 150ms ease-in;
 }
 
 a:hover {
@@ -103,7 +116,6 @@ a:hover {
     inset 0px 0px 0px whitesmoke,
     inset 0px 0px 0px whitesmoke;
     transform: translateY(1px);
-    background-color: rgba(255,255,255,0.3);
 }
 
 a:active {

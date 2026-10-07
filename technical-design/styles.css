@@ -9,7 +9,10 @@
   --font-lg: clamp(1.2rem, 0.9rem + 0.7vw, 2.25rem);
   --font-md: clamp(1.15rem, 0.7rem + 0.45vw, 1.45rem);
   --font-sm: clamp(1rem, 0.55rem + 0.35vw, 1.25rem);
-
+  --dot-bg: whitesmoke;
+  --dot-color: gainsboro;
+  --dot-space: clamp(0.875rem, 0.875rem + 0.5vw, 1.25rem);
+  --dot-size: 2px;
   --gutter: 2rem;
   --g1x: -10%;
   --g1y: 0%;
@@ -31,7 +34,11 @@ body {
   font-size: var(--font-sm);
   color: black;
   padding: var(--gutter);
-  background: whitesmoke;
+  background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), 
+    transparent 1%) center / var(--dot-space) var(--dot-space), 
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), 
+    transparent 1%) center / var(--dot-space) var(--dot-space), var(--dot-color);
   width: 100%;
   height: 100%;
   display: flex;
@@ -111,26 +118,8 @@ main {
   overflow-x: hidden;
   height: 100%;
   width: 100%;
-  background:
-    radial-gradient(
-      circle at var(--g1x) var(--g1y),
-      rgba(0, 206, 209, 0.55) 0%,
-      transparent 75%
-    ),
-    radial-gradient(
-      circle at var(--g2x) var(--g2y),
-      rgba(138, 43, 226, 0.55) 0%,
-      transparent 85%
-    ),
-    radial-gradient(
-      circle at var(--g3x) var(--g3y),
-      rgba(255, 69, 0, 0.55) 0%,
-      transparent 85%
-    ),
-    black
-  ;
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.25);
-  position: relative;
+  background-color: darkslategrey;
+  background-image: url("img/nami.png");  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   align-items: center;
   padding: var(--gutter);
@@ -351,6 +340,7 @@ nav ul li {
 
 .nav-item {
   all: unset;
+  background-color: whitesmoke;
   font-family: 'Stack Sans Notch';
   font-size: var(--font-md);
   box-sizing: border-box;
@@ -381,7 +371,6 @@ nav ul li {
     inset 0px 0px 0px whitesmoke,
     inset 0px 0px 0px whitesmoke;
   transform: translateY(1px);
-  background-color: rgba(255,255,255,0.3);
 }
 
 .nav-item.clicked {
