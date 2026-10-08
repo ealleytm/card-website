@@ -57,7 +57,6 @@ nav {
     flex-direction: column;
     margin: var(--gutter);
     padding: var(--gutter);
-    cursor: default;
 }
 
 h1 {
@@ -78,6 +77,7 @@ h2 {
     object-fit: contain;
     margin: 20px 0px;
     align-self: center;
+    pointer-events: none;
 }
 
 p {
@@ -97,7 +97,6 @@ a {
     width: 100%;
     text-align: left;
     margin: 0 0 1rem 0;
-    cursor: pointer;
     background-color: whitesmoke;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
@@ -106,7 +105,7 @@ a {
         -4px -4px 3px rgba(255, 255, 255, 0.8),
         inset 0px 0px 0px whitesmoke,
         inset 0px 0px 0px whitesmoke;
-  transition: color box-shadow 150ms ease-in, border 150ms, transform 150ms ease-in;
+    transition: box-shadow 150ms ease-in, transform 150ms ease-in;
 }
 
 a:hover {
