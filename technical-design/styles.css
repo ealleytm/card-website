@@ -113,6 +113,7 @@ main {
   height: 100%;
   width: 100%;
   background:
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.2'/%3E%3C/svg%3E"),
     radial-gradient(
       circle at 110% 66%,
       rgba(0, 206, 209, 0.35) 0%,
@@ -130,6 +131,7 @@ main {
     ),
     black
   ;
+  background-blend-mode: hard-light, screen, screen, screen, normal;
   box-shadow: inset 15px 15px 32px rgba(0, 0, 0, 0.5);
   position: relative;
   border-radius: 8px;
