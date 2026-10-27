@@ -42,7 +42,7 @@ nav {
     max-width: 640px;
 }
 
-.intro {
+.text-box {
     display: flex;
     flex-direction: column;
     align-self: center;
