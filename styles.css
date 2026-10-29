@@ -5,10 +5,10 @@
 }
 
 :root {
-  --font-xl: clamp(1.25rem, 1.25rem + 1.6vw, 4.5rem);
-  --font-lg: clamp(0.9rem, 0.9rem + 0.7vw, 2.25rem);
-  --font-md: clamp(1.15rem, 0.7rem + 0.45vw, 1.45rem);
-  --font-sm: clamp(1rem, 0.55rem + 0.35vw, 1.25rem);
+  --font-xl: 2rem;
+  --font-lg: 1.5rem;
+  --font-md: 1rem;
+  --font-sm: 0.64rem;
   --dot-bg: whitesmoke;
   --dot-color: gainsboro;
   --dot-space: clamp(0.875rem, 0.875rem + 0.5vw, 1.25rem);
@@ -22,15 +22,13 @@ html {
 }
 
 body {
-  background:
-    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), 
-    transparent 1%) center / var(--dot-space) var(--dot-space), 
-    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), 
-    transparent 1%) center / var(--dot-space) var(--dot-space), var(--dot-color);
-    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100dvh;
+    width: 100%;
+    background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.2'/%3E%3C/svg%3E"), radial-gradient( circle at 110% 66%, rgba(0, 206, 209, 0.35) 0%, transparent 75% ), radial-gradient( circle at 66% -10%, rgba(138, 43, 226, 0.45) 0%, transparent 90% ), radial-gradient( circle at -15% 110%, rgba(255, 69, 0, 0.35) 0%, transparent 60% ), black;
 }
 
 nav {
@@ -38,8 +36,8 @@ nav {
     flex-direction: column;
     align-self: center;
     width: 100%;
-    padding: var(--gutter);
     max-width: 640px;
+    margin-bottom: var(--gutter);
 }
 
 .text-box {
@@ -47,7 +45,6 @@ nav {
     flex-direction: column;
     align-self: center;
     width: 100%;
-    padding: var(--gutter);
     max-width: 640px;
 }
 
@@ -56,7 +53,17 @@ nav {
     display: flex;
     flex-direction: column;
     margin: var(--gutter);
+    margin-bottom: 0px;
     padding: var(--gutter);
+    background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), 
+    transparent 1%) center / var(--dot-space) var(--dot-space), 
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), 
+    transparent 1%) center / var(--dot-space) var(--dot-space), var(--dot-color);
+    background-attachment: fixed;
+    border-radius: 10px;
+    overflow: scroll;
+    box-shadow: 0px 0px 10px white;
 }
 
 h1 {
@@ -67,8 +74,20 @@ h1 {
 h2 {
     font-family: "Stack Sans Notch", sans-serif;
     font-size: var(--font-lg);
-    color: #555;
+    color: gray;
     line-height: 0.9;
+    font-weight: 500;
+}
+
+h3 {
+    font-family: "Atkinson Hyperlegible Mono", monospace;
+    color: #555;
+    font-size: var(--font-sm);
+    margin-top: var(--font-md);
+    text-align: right;
+    padding-bottom: var(--font-sm);
+    padding-right: var(--gutter);
+    text-transform: uppercase;
     font-weight: 500;
 }
 
@@ -81,9 +100,9 @@ h2 {
 }
 
 p {
-    margin: 2rem 1rem 0.5rem 0rem;
-    font-family: "Atkinson Hyperlegible", sans-serif;
-    font-size: var(--font-sm);
+    margin-top: var(--font-md);
+    font-family: "Atkinson Hyperlegible Next", sans-serif;
+    font-size: var(--font-md);
     color: #2b2b2b
 }
 
@@ -165,6 +184,11 @@ a:hover::after {
 
 .copyright {
     text-align: center;
+    padding: var(--font-sm);
+    font-family: "Atkinson Hyperlegible Mono", monospace;
+    font-size: var(--font-sm);
+    color: whitesmoke;
+    font-weight: 500;
 }
 
 .redText {
@@ -173,4 +197,21 @@ a:hover::after {
 
 .blueText {
     color: darkturquoise
+}
+
+@media (min-width: 640px) {
+    :root {
+        --font-xl: 4rem;
+        --font-lg: 2rem;
+        --font-md: 1.25rem;
+        --font-sm: 0.75rem;
+        --gutter: 1.75rem;
+    }
+}
+
+@media (min-width: 1080px) {
+    .content {
+        width: 1080px;
+        height: 810px;
+    }
 }
