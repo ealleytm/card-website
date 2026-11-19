@@ -6,58 +6,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Redaction+35:ital,wght@0,400;0,700;1,400&family=Redaction:ital,wght@0,400;0,700;1,400&family=Special+Gothic+Expanded+One&family=Stack+Sans+Headline:wght@200..700&display=swap" rel="stylesheet">  <title>Evan Alley | Technical Design</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
-  <div class="hamburger">
-    <img src="icon/menu.svg">
-  </div>
-
   <header>
-
     <div class="banner">
       <h1>
-        <span style="color: darkturquoise">EVAN</span><span style="color: orangered">ALLEY</span>
+        <span style="color: darkturquoise; padding-left: var(--slim-space);">EVAN</span><span style="color: orangered">ALLEY</span><span style="font-size: var(--font-lg); color: whitesmoke;">.biz</span>
       </h1>
-      <nav aria-label="Primary" class="primary">
-        <a>Home</a>
-        <a>Game Design</a>
-        <a>Graphic Design</a>
-        <a>Links</a>
-        <a>About</a>
-      </nav>
     </div>
 
-    <nav aria-label="Secondary" class="secondary">
+    <div aria-label="Primary Navigation" class="primary-nav" id="primary-nav">
+      <a class="selected"><span>Home</span></a>
+      <a href="./portfolio/index.html"><span>Portfolio</span></a>
+      <a href="./links/index.html"><span>Links</span></a>
+      <a href="./about/index.html"><span>About</span></a>
+    </div>
+
+      <div aria-label="Secondary Navigation" class="secondary-nav" id="secondary-nav">
         <button type="button" class="nav-item clicked wide" data-name="home">
-            Home
+          Landing Page
         </button>
+      </div>
 
-        <button type="button" class="nav-item" data-name="syke">
-          Syke
-        </button>
-
-        <span></span>
-
-        <button type="button" class="nav-item" data-name="hydroplane">
-          Hydroplane
-        </button>
-
-        <button type="button" class="nav-item" data-name="theatour">
-          Theatour
-        </button>
-
-        <span class="wide"></span>
-
-        <button type="button" class="nav-item" data-name="about">
-          About
-        </button>
-      
-    </nav>
+    <div class="copyright" id="copyright">
+      Copyright 2026 Evan Alley. Design by Alleydot
+    </div>
   </header>
 
-  <main id="contentContainer">
+  <main id="contentContainer" class="hidden">
 
     <div class="card clickable" data-name="syke">
       <img src="img/syke-splash.png" alt="Syke splash art">
@@ -69,19 +47,19 @@
         </p>
         <div class="icons">
           <div class="badge">
-            <img src="icon/thumb-up.svg" alt="Ratings:">
+            <img src="../icon/thumb-up.svg" alt="Ratings:">
             9/10
           </div>
           <div class="badge">
-            <img src="icon/download.svg" alt="Downloads:">
+            <img src="../icon/download.svg" alt="Downloads:">
             30K+
           </div>
           <div class="badge">
-            <img src="icon/team.svg" alt="Team size">
+            <img src="../icon/team.svg" alt="Team size">
             31
           </div>
-          <img src="icon/deck.svg" alt="Steam Deck">
-          <img src="icon/unreal.svg" alt="Unreal Engine">
+          <img src="../icon/deck.svg" alt="Steam Deck">
+          <img src="../icon/unreal.svg" alt="Unreal Engine">
         </div>
       </div>
     </div>
@@ -94,11 +72,11 @@
         <p>Contributed 3Cs (Camera, character, control) design and implementation</p>  
         <div class="icons">
           <div class="badge">
-            <img src="icon/team.svg" alt="Team size:">
+            <img src="../icon/team.svg" alt="Team size:">
             3
           </div>
-          <img src="icon/web.svg" alt="Web">
-          <img src="icon/godot.svg" alt="Godot">
+          <img src="../icon/web.svg" alt="Web">
+          <img src="../icon/godot.svg" alt="Godot">
         </div>
       </div>
     </div>  
@@ -111,11 +89,11 @@
         <p>Contributed tools, software design, and implementation of location services.</p>
         <div class="icons">
           <div class="badge">
-            <img src="icon/team.svg" alt="Team size">
+            <img src="../icon/team.svg" alt="Team size">
             8
           </div>
-          <img src="icon/mobile.svg" alt="Mobile">
-          <img src="icon/unity.svg" alt="Unity">
+          <img src="../icon/mobile.svg" alt="Mobile">
+          <img src="../icon/unity.svg" alt="Unity">
         </div>
       </div>
     </div>
@@ -124,7 +102,7 @@
   </main>
 
   <script src="https://unpkg.com/navigo@8.11.1/lib/navigo.min.js"></script>
-  <script src="menu.js"></script>
+  <script src="../menu.js"></script>
   <div class="modal" id="image-modal">
     <div class="modal-content">
       <img id="modal-image" alt="Modal content">

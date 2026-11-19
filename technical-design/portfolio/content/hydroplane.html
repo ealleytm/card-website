@@ -1,0 +1,258 @@
+<section id="project-info">
+    <h1>Hydroplane</h1>
+    <h2>A game about going fast, staying slick, and dodging walls.</h2>
+    <hr>
+    <p>
+        Hydroplane was a submission to the 2026 Bigmode Game Jam, and was selected from amongst almost 650 other games to be one of 20 finalists presented during the end-of-jam livestream by YouTuber VideoGameDunkey.
+        I made this game with two friends. I was the original visionholder, and wrote the code for the player controller. I came into this game with a very specific sensation I wanted to communicate to the player, 
+        and this guided most of my decisions.
+    </p>
+
+    <div class="frame">
+        <div class="frame-media">
+          <iframe src="https://www.youtube.com/embed/dQlRPMjfbqg?si=HCnQNUkdPu95DtjG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <div class="side-by-side">
+        <div>
+            <h3>Project Details</h3>
+            <table>
+                <tr>
+                    <td>Role</td> 
+                    <td>3Cs Design (Camera, Character, Control)</td>
+                <tr>
+                    <td>Team Size</td> 
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Timeline</td>
+                    <td>1 Week</td>
+                </tr>
+                <tr>
+                    <td>Platform</td>
+                    <td>Web (HTML5)</td>
+                </tr>
+                <tr>
+                    <td>Engine</td>
+                    <td>Godot</td>
+                </tr> 
+                <tr>
+                    <td>Released</td>
+                    <td>2026</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://ealleytm.itch.io/hydroplane" style="text-decoration: underline;">Play on Itch!</a>
+                  </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Contributions/Case Studies</h3>
+            <table>
+                <tr>
+                    <td>Sense of Speed</td>
+                </tr>
+                <tr>
+                    <td>Input Tuning</td>
+                </tr>
+                <tr>
+                    <td>Level Design</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section id="articles">
+  <article id="sense-of-speed">
+    <h2>Sense of Speed</h2>
+    <hr>
+    <div class="side-by-side">
+        <div>
+            <h3>Problem</h3>
+            <p>Early feedback included "I can't tell what the car is doing," "I'm going way faster than I think I am," "Obstacles come up way faster than I think they will," and "Feels like a toy car." Players were struggling to gauge their speed, and inputs felt robotic.</p>
+        </div>
+        <div>
+            <h3>Outcome</h3>
+            <p>The sense of speed became the game's standout feature; playtesters comments changed to "Feels great, I love the FOV warping," "I'm in the zone," and simply "Woah." By layering multiple simple effects in creative ways, they became more than the sum of the parts.</p>
+        </div>
+    </div>
+    
+    <h3>Process</h3>
+    <ol>
+      <li><strong>Camera effects:</strong> started with a simple FOV increase at speed, which didn't quite land. Adding a camera drop and upward pivot gave a "pressed into the seat" feeling, but it felt a bit robotic.</li>
+      <li><strong>Camera shake:</strong> Camera shake is obnoxious if it's constant, so I based it on a curve multiplied by speed and pivot angle. Harder, faster corners will shake the camera more violently. Additionally, left-right camera shake tested better than up-down camera shake.</li>
+      <div class="side-by-side">
+        <div class="frame">
+          <div class="frame-media">
+            <img src="img/hydroplane-1.gif" alt="Gameplay with untuned camera movement">
+              <div class="card-content"><p style="font-style: italic;">Camera movement & FOV</p></div>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="frame-media"><img src="img/hydroplane-2.gif" alt="Gameplay with camera shake">
+            <div class="card-content"><p style="font-style: italic;">Camera shake</p></div>  
+          </div>
+        </div>
+      </div>
+      <li><strong>Model warping:</strong> As the camera settled into its maximum FOV, the car itself flattened and widened slightly in a "Hot Wheels" style. Not enough to be obvious, but perceptible when combined with other effects.</li>
+      <li><strong>Suspension:</strong> The car tilts based on cornering violence, and tires move up and down accordingly. No simulation was necessary - since the movement system was so limited, we could get away with faking it visually.</li>
+      <div class="side-by-side">
+        <div class="frame">
+          <div class="frame-media"><img src="img/hydroplane-3.gif" alt="Gameplay with model warping">
+            <div class="card-content"><p style="font-style: italic;">Model warping</p></div>  
+          </div>
+        </div>
+        <div class="frame">
+          <div class="frame-media"><img src="img/hydroplane-4.gif" alt="Gameplay with wheel & suspension animation">
+            <div class="card-content"><p style="font-style: italic;">Wheel & suspension animations</p></div>  
+          </div>
+        </div>
+      </div>
+      <li><strong>Rain particles:</strong> Rain is spawned in a box parented to the car. The dense collection of drops in a small area - plus their angle relative to movement - subconsciously signals speed to the player and creates an intuitive guide for approach angle.</li>
+      <li><strong>Environmental feedback:</strong> Making the ground transparent meant that we could fake reflections, and the visual of tall buildings blurring past the camera gave players a better sense of relative location and velocity.</li>
+
+      <li><strong>Sound design:</strong> Tire squeal intensity scales with approach angle and speed. Engine pitch changes noticeably as speed decreases, so that players can hear when they're slowing down.</li>
+      <li>
+        <strong>Reflections and UI:</strong> A "reflected" car hiding beneath the main model was the final touch to sell the illusion of wet pavement. The rearview mirror and stopwatch UI elements pivot with the car, adding to perceived inertia.
+        <div class="frame">
+          <div class="frame-media"><img src="img/hydroplane-5.gif" alt="PLACEHOLDER">
+            <div class="card-content"><p style="font-style: italic;">Rain and reflections</p></div>  
+          </div>
+        </div>
+      </li>
+    </ol>
+    
+    <h3>Solution</h3>
+    <p>A long list of small, carefully tuned systems working together creates an intense, grounded sense of speed. Each element was chosen to reinforce the core feeling without sacrificing performance on mobile and web.</p>
+    
+    <h3>Impact</h3>
+    <ul>
+      <li>Extremely polished controls mentioned repeatedly in reviews</li>
+      <li>Players return specifically for the "feel," not mechanics or progression</li>
+      <li>Achieved simulation-quality effects with efficient illusions, staying performant across platforms</li>
+    </ul>
+    
+    <h3>Learnings</h3>
+    <p>Layering effects felt similar to cooking a good meal - too much of anything and it quickly became nauseating. Dialing in the contrast across all the effecs was essential to sell the specific sense of friction for our game.</p>
+  </article>
+  
+  <article id="input-tuning">
+    <h2>Input Tuning</h2>
+    <hr>
+    <div class="side-by-side">
+        <div>
+            <h3>Problem</h3>
+            <p>The gameplay concept was interesting on paper, but it didn't feel good to play. Players complained that "I can't control the car after about this point," and "couldn't tell what the goal was." Losing control of the car felt inevitable and unfair.</p>
+        </div>
+        <div>
+            <h3>Outcome</h3>
+            <p>Input curve tuning saved the day, and feedback shifted to "Hard but fair," "The dark souls of racing games," and "Incredibly satisfying." Players felt challenged but empowered.</p>
+        </div>
+    </div>
+    
+    <h3>Process</h3>
+    <ol>
+      <li><strong>Speed management:</strong> Started with infinite acceleration inspired by the sensation of bombing a hill on a skateboard, requiring players to slide and manage speed. This was conceptually interesting, but quickly felt unfair.</li>
+      <li>
+        <strong>Friction patches:</strong> Added as a speed mitigation tool to complement sliding, but their readability suffered at high speeds, and recoveries from mistakes didn't exist. Loss of control meant a guaranteed crash.
+        <div class="side-by-side">
+          <div class="frame">
+            <div class="frame-media"><img src="img/hydroplane-speed-demo.gif" alt="Gameplay with model warping">
+              <div class="card-content"><p style="font-style: italic;">Unmanageable speed</p></div>  
+            </div>
+          </div>
+          <div class="frame">
+            <div class="frame-media"><img src="img/hydroplane-friction-demo.gif" alt="Friction demonstration">
+              <div class="card-content"><p style="font-style: italic;">Testing friction patches</p></div>  
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><strong>Tested detuning:</strong> Reducing the sense of speed and widening the track improved readability for friction patches and obstacles, but the game lost its core appeal and felt less engaging.</li>
+      <li><strong>Speed limits:</strong> We introduced a speed limit after player testing convinced us they were necessary. Despite my initial resistance, this was obviously a good change in retrospect.</li>
+      <li><strong>Simplified the design:</strong> Cutting friction patches became an obvious necessity amid engineering scope and readability issues. Sense of speed became a priority at this point.</li>
+      <li>
+        <strong>Revised input curves:</strong>. Made traction harder to lose and recovery easier. This improved fairness while still punishing overcommitment: you could recover if you thought ahead, but aggressive driving came with real risk.
+        <div class="frame">
+          <div class="frame-media"><img src="img/hydroplane-level-ball-demo.gif" alt="PLACEHOLDER"></div>
+        </div>
+      </li>
+      <li>
+        <strong>Minimum speed:</strong> Added as a "rolling start" to prevent glitches where turning would eventually fling the player into a wall at high speed.
+      </li>
+      <li><strong>Control inversion:</strong> Testing revealed "inverted" controls felt better and won in A/B testing with players.</li>
+    </ol>
+    
+    <h3>Solution</h3>
+    <p>Pare the gameplay down to two inputs and minimal cognitive load variables: direction of momentum, left/right input, wall distance, and upcoming turn. With fewer things to track, players can focus on making deliberate choices. Recovery from mistakes is possible, but foresight was strongly rewarded.</p>
+    
+    <h3>Impact</h3>
+    <p>The polished player controller (combined with sense of speed work) directly contributed to the game's extremely positive reception. Players felt the controls were responsive and fair, even when the game was hard.</p>
+    
+    <h3>Learnings</h3>
+    <p>Keep it simple, stupid. Every variable the player has to track dilutes their agency. Fewer, more deliberate choices create better gameplay than complex but muddy systems. Testing always revealed what actually mattered to players.</p>
+  </article>
+
+  <article id="level-design">
+    <h2>Level Design</h2>
+    <hr>
+    <div class="side-by-side">
+        <div>
+            <h3>Problem</h3>
+            <p>The prototype used a single building type repeated throughout the level. This made navigation confusing, since players couldn't remember where they were or how far they'd traveled. They relied entirely on the HUD to track distance, with comments like "I can't keep track of how far I got" and "I forgot that turn was coming up!"</p>
+        </div>
+        <div>
+            <h3>Outcome</h3>
+            <p>With distinct visual zones, players easily identified their location and progress. Feedback changed to "This is the turn I always die at," "I've never seen this area before!", and "I remember there's a big turn after this water tower..." Players were empowered to build mental maps and could compare runs based on landmarks.</p>
+        </div>
+    </div>
+
+    <div class="frame">
+      <div class="frame-media"><img src="img/hydroplane-levels-far.png" alt="PLACEHOLDER"></div>
+    </div>
+    
+    <h3>Process</h3>
+    <ol>
+      <li><strong>Zoning:</strong> My design started with the concept of dividing the level into distinct "zones," creating a stratified city for the player to explore.</li>
+      <li>
+          <strong>Shapes and colors:</strong> Each zone had a distinct color and shape palette which helped to differentiate them from eachother and helped the player create a mental model.
+          <div class="side-by-side">
+          <div class="frame">
+            <div class="frame-media"><img src="img/hydroplane-level-demo.gif" alt="Gameplay with no buildings">
+              <div class="card-content"><p style="font-style: italic;">Before buildings</p></div>  
+            </div>
+          </div>
+          <div class="frame">
+            <div class="frame-media"><img src="img/hydroplane-level-demo-2.gif" alt="Gameplay after buildings">
+              <div class="card-content"><p style="font-style: italic;">After buildings</p></div>  
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <strong>Bridges:</strong> Visual separation between zones needed something cohesive and striking. Bridges became the answer, as they served as visual landmarks while also giving the level clear structure.
+        <div class="frame">
+          <div class="frame-media"><img src="img/hydroplane-bridge-demo.gif" alt="PLACEHOLDER"></div>
+        </div>
+      </li>
+      <li><strong>Immersion:</strong> A last-minute addition was culling the rain droplets effect when the player went under a bridge. This simple effect added polish and immersion, reinforcing the transition between zone while grounding the player in the landscape of the game.</li>
+    </ol>
+    
+    <h3>Solution</h3>
+    <p>Create unique "zones" separated by visually distinctive bridges, each with its own color palette, basic architectural shapes, character, and implicit narrative. Add rain cutout to reinforce transitions and enhance immersion.</p>
+    
+    <h3>Impact</h3>
+    <ul>
+      <li>Rain cutout effect was frequently praised in reviews</li>
+      <li>Players easily identified their location and estimated distance traveled without relying on HUD</li>
+      <li>Players were encouraged to explore and continue running</li>
+      <li>However, players still stopped playing after achieving a high score rather than exploring for novelty</li>
+    </ul>
+    
+    <h3>Learnings</h3>
+    <p>Visual readability improved significantly, but the level design missed an opportunity for narrative intrigue. While the backgrounds serve as a functional readability improvement, they could have been more evocative and story-driven. Checkpoints at key landmarks would have encouraged continued play beyond high-score chasing.</p>
+  </article>
+</section>

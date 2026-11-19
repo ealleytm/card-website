@@ -1,0 +1,148 @@
+<section id="project-info">
+    <h1>Theatour</h1>
+    <h2>An augmented-reality educational game that guides new students through campus via story and location-based puzzles.</h2>
+    <hr>
+    <p>
+        Theatour is an AR educational game demo developed over 4 months by a team of 8 students. Inspired by Niantic's Ingress and the designer's own college onboarding experience, the project uses augmented reality, location services, and procedurally generated storytelling to create an immersive campus tour for new students.
+    </p>
+
+    <div class="frame">
+        <div class="frame-media"><img src="img/theatour-6.png" alt="Theatour mockup"></div>
+    </div>
+    
+    <div class="side-by-side">
+        <div>
+            <h3>Project Details</h3>
+            <table>
+                <tr>
+                    <td>Role</td> 
+                    <td>Technical Designer</td>
+                </tr>
+                <tr>
+                    <td>Team Size</td> 
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Timeline</td>
+                    <td>4 Months</td>
+                </tr>
+                <tr>
+                    <td>Platform</td>
+                    <td>Mobile (iOS/Android)</td>
+                </tr>
+                <tr>
+                    <td>Engine</td>
+                    <td>Unity (C#)</td>
+                </tr>
+                <tr>
+                    <td>Released</td>
+                    <td>2022</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h3>Contributions/Case Studies</h3>
+            <table>
+                <tr>
+                    <td>Procedural Narrative Architecture</td>
+                </tr>
+                <tr>
+                    <td>Cost Optimization</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section id="articles">
+  <article id="procedural-narrative">
+    <h2>Procedural Narrative</h2>
+    <hr>
+    <div class="side-by-side">
+        <div>
+            <h3>Problem</h3>
+            <p>Writers and designers needed a way to contribute story content without being blocked by technical implementation. Many team members had never made a digital game before, and there was no clear pipeline for non-programmers to author narrative content. Every story addition required engineering support.</p>
+        </div>
+        <div>
+            <h3>Outcome</h3>
+            <p>A developer-friendly procedural narrative system that allowed writers and designers to author story snippets which the engine would dynamically assemble based on player progress and location. Non-technical team members could contribute story independently, and the system remained flexible enough for rapid iteration and content changes.</p>
+        </div>
+    </div>
+    
+    <h3>Process</h3>
+    <p>Building a system that enabled contribution across skill levels required careful architecture:</p>
+    <ol>
+      <li><strong>Separation of concerns:</strong> Designed the system to cleanly separate gameplay logic from narrative content. This allowed programmers to build systems while writers and designers worked independently.</li>
+      <li>
+        <strong>Modular content snippets:</strong> Instead of monolithic story sequences, broke narrative into developer-written snippets that could be mixed and matched procedurally.
+        <div class="side-by-side">
+          <div class="frame">
+            <div class="frame-media"><img src="img/theatour-1.png" alt="Theatour data structures">
+              <div class="card-content"><p style="font-style: italic; color: black; text-shadow: white;">Data structures</p></div>  
+            </div>
+          </div>
+          <div class="frame">
+            <div class="frame-media"><img src="img/theatour-3.png" alt="Theatour narrative rendering">
+              <div class="card-content"><p style="font-style: italic;">Narrative rendering</p></div>  
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><strong>Contextual assembly:</strong> Story was procedurally generated at runtime based on two variables: player progress (how far through the game) and location (where the player is on campus).</li>
+      <li><strong>No-code authoring:</strong> Writers and designers filled in content tables without touching code, allowing for meaningful contributions without technical blockers.</li>
+    </ol>
+    
+    <h3>Solution</h3>
+    <p>A modular procedural narrative system with a clean data structure as the interface between technical and creative teams. Story snippets authored by writers and designers are assembled at runtime based on player progress and location, generating unique narrative paths for players to experience.</p>
+    
+    <h3>Impact</h3>
+    <ul>
+      <li>Enabled non-programmers to contribute narrative content independently</li>
+      <li>Allowed rapid story iteration and testing without technical bottlenecks</li>
+      <li>Supported multiple narrative paths based on player progress and location</li>
+      <li>Created a scalable system where new content could be added by following established data patterns</li>
+    </ul>
+    
+    <h3>Learnings</h3>
+    <p>When you separate concerns properly and create clear interfaces, team members with different skill sets can work independently and in parallel. The best technical systems are the ones that disappear from the perspective of non-technical collaborators.</p>
+  </article>
+
+  <article id="cost-optimization">
+    <h2>Cost Optimization: Google Maps API</h2>
+    <hr>
+    <div class="side-by-side">
+        <div>
+            <h3>Problem</h3>
+            <p>The game relied on constant Google Maps API calls to maintain location services and map data, creating redundant network traffic and expensive service costs. The API was being queried continuously throughout gameplay, far more often than necessary given the actual usage patterns and constraints.</p>
+        </div>
+        <div>
+            <h3>Outcome</h3>
+            <p>Disconnected the game from the Google Maps API while retaining full location services and map functionality. Reduced API calls from constant redundant queries to a single check per app session, dramatically cutting service costs while maintaining the same user experience.</p>
+        </div>
+    </div>
+    
+    <h3>Process</h3>
+    <p>The optimization came from understanding actual usage constraints:</p>
+    <ol>
+      <li><strong>Identified the constraint:</strong> Recognized a critical constraint: players would only ever use this app while physically at the university. The game was designed for a specific location, not general use.</li>
+      <li><strong>Designed the boundary check:</strong> Instead of continuous API polling, implemented a single latitude/longitude check when the app opens to verify the player is within the school's geographic bounds.</li>
+      <li><strong>Pre-installed map data:</strong> On API connection, the local University map was downloaded and saved to the device.</li>
+      <li><strong>Retained full functionality:</strong> Location services and map data remained available throughout gameplay, and redundant API calls were eliminated.</li>
+      <li><strong>Cost-benefit analysis:</strong> Instead of potentially hundreds of API calls per session, which was unfeasible for an independent demo, the app now makes exactly one per session.</li>
+    </ol>
+    
+    <h3>Solution</h3>
+    <p>Replace continuous Google Maps API polling with a single boundary check on app open. When the app launches, verify via latitude/longitude that the player is within the school's geographic bounds. If they are, proceed with the game using cached map data and local location services. If not, prevent access or display an out-of-bounds message. This eliminates redundant API calls while maintaining the same functionality and user experience.</p>
+    
+    <h3>Impact</h3>
+    <ul>
+      <li>Dramatically reduced projected service costs</li>
+      <li>Maintained full location services and map functionality</li>
+      <li>Improved app performance by reducing network overhead</li>
+      <li>Enabled the project to stay within budget constraints while using expensive geolocation APIs</li>
+    </ul>
+    
+    <h3>Learnings</h3>
+    <p>Understanding the actual context and constraints of how your product will be used reveals optimization opportunities that generic solutions miss. We didn't need to eliminate the Maps API entirely, we just needed to understand that it would only be used once per session. Also, cost-benefit analysis of third-party tools and services should happen early in development to prevent expensive surprises.</p>
+  </article>
+</section>
