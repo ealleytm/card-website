@@ -48,6 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  content.addEventListener("click", (e) => {
+    const card = e.target.closest(".card.clickable[data-name]");
+    if (!card) return;
+    router.navigate(card.dataset.name);
+  });
+
   hamburger.addEventListener("click", () => {
     nav.classList.toggle("open");
     content.classList.toggle("hidden");
